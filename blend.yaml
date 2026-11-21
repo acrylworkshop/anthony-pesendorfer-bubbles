@@ -1,0 +1,37 @@
+# The app as data, in ACRYL's Blend format (blends.acryl.dev/v1alpha1): which plugins it mounts, in what order, with what config.
+# Edit this, not app.ts, to switch a plugin off (disabled: true) or change its config. `npm run lock` records what the app is built from.
+apiVersion: blends.acryl.dev/v1alpha1
+kind: Blueprint
+metadata:
+  id: acrylblends.fusfetch
+  name: fusfetch
+  version: 0.1.0
+  visibility: private # `npm run save` never pushes a private app to a public remote
+spec:
+  runtime: cordis
+  parameters:
+    # The address the server listens on.
+    hostname: { type: string, default: 127.0.0.1 }
+  rows:
+    - id: router
+      name: acryl-router
+    # A page background of hydrogen orbital probability clouds: moving the pointer morphs them into higher orbitals.
+    - id: orbital-background
+      name: orbital-background
+    # The app: bubbles at / and /bubbles, a wavy core, bubbles that swim with friction, nested documents that run as code, and energized lines that set the order.
+    - id: bubbles
+      name: bubbles
+    # Plugin folders without a row of their own (a live install with the door's `plugin add`); a folder with a row is the app's and starts by it.
+    # Read-only when NODE_ENV=production.
+    - id: extensions
+      name: extensions
+    # Sharing: `npm run acryl -- plugin pull github:<owner>/<repo>@<version>` installs a plugin someone released (development only).
+    - id: plugin-share
+      name: plugin-share
+    - id: server
+      name: acryl-node-server
+      config:
+        hostname: "{{parameters.hostname}}"
+    # The door: an agent working in this folder looks at the page and acts on it through .acryl/bin/acryl. Development only: src/app.ts leaves it out when NODE_ENV=production.
+    - id: acryl-door
+      name: acryl-door
