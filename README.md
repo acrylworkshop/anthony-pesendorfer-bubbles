@@ -2,6 +2,8 @@
 
 A local canvas where every bubble is a note or a shell command, and pressing Run walks them in the order you drew.
 
+Made with [ACRYL Blends](https://acrylblends.github.io), a framework where every part of an app is a plugin and one `blend.yaml` says which.
+
 ## What this is
 
 Bubbles is a small, single-user web app for thinking and then doing:
@@ -19,7 +21,12 @@ The page is one HTML document, at `/` and at `/bubbles`. Its JSON API lives unde
 
 ## Built with
 
-A [Cordis](https://cordis.js.org) app on the ACRYL framework. TypeScript runs directly on Node 22.19 or newer, with no build step. The framework and its dev tools are vendored in `plugins/`, so the repo is self-contained. The app itself is three files in `plugins/bubbles/`: `index.ts` (routes and page), `client.js` (the page half) and `store.ts` (the data).
+Built with [ACRYL Blends](https://acrylblends.github.io): a [Cordis](https://cordis.js.org) app where each feature is a plugin in `plugins/` and [blend.yaml](blend.yaml) composes them, in order, with their config. ACRYL runs TypeScript directly on Node 22.19 or newer, so there is no build step.
+
+- This app is one plugin, [plugins/bubbles](plugins/bubbles): `index.ts` (routes and page), `client.js` (the page half) and `store.ts` (the data).
+- The sky behind it is a second, [plugins/orbital-background](plugins/orbital-background).
+- The framework itself is vendored in `plugins/` (router, node server, the builder's frame), so the repo is self-contained and runs offline after `npm install`.
+- Everything is ordinary plugin code: a feature is a folder with an `index.ts`, a row in `blend.yaml`, and its test. The framework is [open source](https://github.com/acryldev/acryl), and the [ACRYL docs](https://acrylblends.github.io/docs) cover building your own.
 
 ## Run it locally
 
