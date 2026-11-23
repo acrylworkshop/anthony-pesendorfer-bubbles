@@ -1,3 +1,9 @@
+![Bubbles: a canvas of connected bubbles, one bubble holding three more](docs/workshop-screenshot.png)
+
+**Bubbles by Anthony M. Pesendorfer**, built at the [ACRYL Bootcamp](https://github.com/acrylworkshop/bootcamp-2026-11-20), Vienna, 20 November 2026.
+
+---
+
 # Bubbles
 
 A local canvas where every bubble is a note or a shell command, and pressing Run walks them in the order you drew.
